@@ -25,7 +25,7 @@ public class DepartureAfterTimeRuleTest {
         List<Flight> result = sorterFlights.getFlightsAccordingRules(
                 flights, List.of(rule)
         );
-        assertEquals(expected.toString(), result.get(0).toString());
+        assertEquals(expected, result.get(0));
     }
 
     @Test
