@@ -16,3 +16,6 @@
 1. вылет до текущего момента времени
 2. имеются сегменты с датой прилёта раньше даты вылета
 3. общее время, проведённое на земле превышает два часа (время на земле — это интервал между прилётом одного сегмента и вылетом следующего за ним)
+
+Status of Last Depoyement:<br>
+<img src="https://github.com/DDavydov911/Gridnine_testing_task/workflows/CI_of_DreamJob/badge.svg?branch=master"><br>
