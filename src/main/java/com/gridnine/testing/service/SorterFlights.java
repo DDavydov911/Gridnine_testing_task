@@ -5,6 +5,7 @@ import com.gridnine.testing.rules.Rule;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SorterFlights {
 
@@ -27,5 +28,12 @@ public class SorterFlights {
             System.out.println("Flights list or rules list must not be empty!");
         }
         return result;
+    }
+
+    public List<Flight> getFlightsAccordingRulesByStream(List<Flight> flights, List<Rule> rules) {
+        return flights.stream()
+                .filter(flight -> rules.stream()
+                        .allMatch(rule -> rule.test(flight)))
+                .collect(Collectors.toList());
     }
 }

@@ -21,11 +21,24 @@ public class Main {
                         new NoErrorTimeSegmentsRule()
                 )
         ).forEach(System.out::println);
+        System.out.println("Case Stream");
+        sorterFlights.getFlightsAccordingRulesByStream(
+                flights, List.of(
+                        new NoErrorTimeSegmentsRule()
+                )
+        ).forEach(System.out::println);
         System.out.println();
 
         System.out.println("The list of flights with right time segments and "
-                 + "departure time before tomorrow the same time:");
+                + "departure time before tomorrow the same time:");
         sorterFlights.getFlightsAccordingRules(
+                flights, List.of(
+                        new DepartureAfterTimeRule(LocalDateTime.now().minusDays(1)),
+                        new NoErrorTimeSegmentsRule()
+                )
+        ).forEach(System.out::println);
+        System.out.println("Case Stream");
+        sorterFlights.getFlightsAccordingRulesByStream(
                 flights, List.of(
                         new DepartureAfterTimeRule(LocalDateTime.now().minusDays(1)),
                         new NoErrorTimeSegmentsRule()
@@ -34,8 +47,16 @@ public class Main {
         System.out.println();
 
         System.out.println("The list of flights with right time segments, "
-               + "up to 2 hours changing time and departures before 4 days later:");
+                + "up to 2 hours changing time and departures before 4 days later:");
         sorterFlights.getFlightsAccordingRules(
+                flights, List.of(
+                        new DepartureAfterTimeRule(LocalDateTime.now().minusDays(4)),
+                        new MaxHoursChangingRule(2),
+                        new NoErrorTimeSegmentsRule()
+                )
+        ).forEach(System.out::println);
+        System.out.println("Case Stream");
+        sorterFlights.getFlightsAccordingRulesByStream(
                 flights, List.of(
                         new DepartureAfterTimeRule(LocalDateTime.now().minusDays(4)),
                         new MaxHoursChangingRule(2),

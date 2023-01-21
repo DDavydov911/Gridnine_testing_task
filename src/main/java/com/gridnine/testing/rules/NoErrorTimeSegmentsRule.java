@@ -10,6 +10,7 @@ public class NoErrorTimeSegmentsRule implements Rule {
 
     @Override
     public boolean test(Flight flight) {
+        /*
         boolean result = true;
         List<Segment> list = new ArrayList<>(flight.getSegments());
         Segment[] segments = list.toArray(new Segment[0]);
@@ -19,5 +20,8 @@ public class NoErrorTimeSegmentsRule implements Rule {
             }
         }
         return result;
+         */
+        return flight.getSegments().stream().allMatch(segment -> segment
+                .getDepartureDate().isBefore(segment.getArrivalDate()));
     }
 }
